@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom'
 
 const Random = () => Math.floor(Math.random() * anecdotes.length)
 
-const DisplayAnecdote = ({ anecdote }) => {
-    return <p>{anecdote}</p>
-}
-
-const DisplayVote = ({ votes, selected}) => {
-   
-    return (<p>has {votes[selected]} votes</p>)
-}
-
 const Button = ({ text, onClick }) => {
     return (
         <button onClick={onClick}>{text}</button>
     )
+}
+
+const Display = ({ text }) => {
+    return (<p style={{ whiteSpace: 'pre' }}>{text}</p>)
+}
+
+const handleAnecdote = (text, votes) => {
+    return `${text}
+has ${votes} votes`
 }
 
 const handleVote = (selected, vote, setVote) => {
@@ -24,16 +24,30 @@ const handleVote = (selected, vote, setVote) => {
     setVote(tempArray)
 }
 
-const App = (props) => {
+const handleMaxVote = (anecdotes, vote) => {
+    const maxValue = Math.max(...vote)
+    const maxValueIndex = vote.indexOf(maxValue)
+    const maxVotedAnecdote = anecdotes[maxValueIndex]
+
+    return `${maxVotedAnecdote}
+has ${maxValue} votes`
+    }
+
+
+
+const App = ({anecdotes}) => {
     const [selected, setSelected] = useState(Random())
     const [vote, setVote] = useState(new Array(6).fill(0))
-    
+    const [selectedAnecdote, currentVotes] = [anecdotes[selected],vote[selected]]
+
     return (
         <div>
-            <DisplayAnecdote anecdote={anecdotes[selected]} />
-            <Button text="vote" onClick={() => handleVote(selected, vote, setVote)}/>
+            <h1>Anecdote of the day</h1>
+            <Display text={handleAnecdote(selectedAnecdote, currentVotes)} />
+            <Button text="vote" onClick={() => handleVote(selected, vote, setVote)} />
             <Button text="next anecdote" onClick={() => setSelected(Random())} />
-            <DisplayVote votes={vote} selected={selected} />
+            <h1>Anecdote with most votes</h1>
+            <Display text={handleMaxVote(anecdotes, vote)} />
         </div>
     )
 }
