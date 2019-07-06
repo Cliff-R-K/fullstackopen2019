@@ -1,26 +1,21 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const Button = ({ onClick, text }) => {
-  return (
-    <>
-      <button onClick={onClick}>
-        {text}
-      </button>
-    </>
+const Button = ({ onClick, text }) => 
+  (
+    <button onClick={onClick}>{text}</button>
   )
-}
 
-const Statistics = ({ text, value }) => {
 
-  return (
+const Statistics = ({ text, value }) => 
+  (
     <tr>
       <td>{text}</td>
       <td>{value}</td>
     </tr>
   )
 
-}
+
 
 const average = (good, bad, total) => {
   return ((good - bad) / total)
@@ -39,7 +34,7 @@ const App = () => {
   const hasRatings = totalRatings > 0
 
   return (
-    <>
+    <div>
       <h1>give feedback</h1>
       <Button onClick={() => setGood(good + 1)} text="good" />
       <Button onClick={() => setNeutral(neutral + 1)} text="neutral" />
@@ -59,7 +54,7 @@ const App = () => {
         </table>
       ) : <p>No feedback</p>
       }
-    </>
+    </div>
 
   )
 }

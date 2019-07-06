@@ -35,7 +35,7 @@ has ${maxValue} votes`
 
 
 
-const App = ({anecdotes}) => {
+const App = () => {
     const [selected, setSelected] = useState(Random())
     const [vote, setVote] = useState(new Array(6).fill(0))
     const [selectedAnecdote, currentVotes] = [anecdotes[selected],vote[selected]]
@@ -62,6 +62,6 @@ const anecdotes = [
 ]
 
 ReactDOM.render(
-    <App anecdotes={anecdotes} />,
+    <App />,
     document.getElementById('root')
 )
