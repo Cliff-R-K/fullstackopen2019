@@ -6,7 +6,9 @@ const Weather = ({ capital }) => {
     const [weather, setWeather] = useState()
 
     const getWeatherData = () => {
-        axios.get('http://api.apixu.com/v1/current.json?key=c1b93947c8184122a67134918191107&q=' + capital)
+        let key = 'c1b93947c8184122a67134918191107'
+        let url = `http://api.apixu.com/v1/current.json?key=${key}&q=${capital}`
+        axios.get(url)
             .then((response) => {
                 setWeather(response.data)
             })
@@ -15,14 +17,14 @@ const Weather = ({ capital }) => {
     useEffect(getWeatherData, [])
 
     return (
-        weather !== undefined ?
+        weather ?
             <>
                 <h2>Weather in {capital}</h2>
                 <p style={{ marginBottom: 0,fontSize:"1.2em" }}><strong>temperature: </strong>{weather.current.temp_c} Celsius</p>
                 <img src={weather.current.condition.icon} height="100" width="100" alt="weather icon" />
                 <p style={{ marginTop: 0,fontSize:"1.2em" } }><strong>wind: </strong>{weather.current.wind_kph} kph direction {weather.current.wind_dir}</p>
             </>
-            : <p >No data found</p>
+            : <p>Loading...</p>
     )
 
 }
