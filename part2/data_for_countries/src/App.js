@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Countries from './components/Countries';
+import Form from './components/Form';
 
 const App = (props) => {
 
@@ -26,10 +27,8 @@ useEffect(hook, [])
   
 return (
     <div >
-      <form>
-        find countries <input value={input} onChange={handleInput} />
-      </form>
-      <Countries countries={countries.filter(country => country.name.toLowerCase().includes(input))} />
+      <Form input={input} onChange={handleInput}/>
+      <Countries setInput={setInput} countries={countries.filter(country => country.name.toLowerCase().includes(input))} />
     </div>
   );
 }

@@ -1,5 +1,9 @@
 import React from 'react';
 import Languages from './Languages';
+import Weather from './Weather';
+
+
+
 
 const CountryDetails = ({ country }) =>
     
@@ -12,6 +16,7 @@ const CountryDetails = ({ country }) =>
             <Languages languages={country.languages} />
         </ul>
         <img src={country.flag} height="100" width="100" alt="country flag" />
+        <Weather capital={country.capital} />
     </div>
 
 export default CountryDetails

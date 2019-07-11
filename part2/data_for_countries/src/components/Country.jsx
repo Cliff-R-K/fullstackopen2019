@@ -1,10 +1,12 @@
 import React from 'react'
 import CountryDetails from './CountryDetails';
+import CountryListing from './CountryListing';
 
-const Country = ({ country, onlyMatch }) =>
+
+const Country = ({ country, onlyMatch, setInput }) =>
     onlyMatch ?
         <CountryDetails country={country} />
-        : <p style={{ margin: 0 }}>{country.name}</p>
+        : <CountryListing country={country} setInput={setInput} />
 
 
 export default Country
