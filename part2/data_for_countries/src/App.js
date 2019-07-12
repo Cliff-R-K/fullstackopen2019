@@ -13,6 +13,10 @@ const handleInput = (event) => {
   setInput(event.target.value)
 } 
 
+const filterCountries = () => 
+ countries.filter(country => country.name.toLowerCase().includes(input))
+
+
 const hook = () => {
   console.log('effect')
   axios
@@ -28,7 +32,7 @@ useEffect(hook, [])
 return (
     <div >
       <Form input={input} onChange={handleInput}/>
-      <Countries setInput={setInput} countries={countries.filter(country => country.name.toLowerCase().includes(input))} />
+      <Countries setInput={setInput} countries={filterCountries()} />
     </div>
   );
 }
