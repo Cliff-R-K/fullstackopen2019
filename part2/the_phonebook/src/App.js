@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Filter from './components/Filter';
 import PersonForm from './components/PersonForm';
 import Persons from './components/Persons';
+import phonebookService from './services/persons'
 
 
 
@@ -12,37 +12,43 @@ const App = () => {
   const [newNumber, setNumber] = useState('')
   const [showFiltered, setFiltered] = useState('')
 
-  const hook = () => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log('promise fulfilled')
-        setPersons(response.data)
-      })
+  const addAll = () => {
+    phonebookService.getAll().then(storedPhonebook => { setPersons(storedPhonebook) })
   }
-  
-  useEffect(hook, [])
-  
-  const isNumberDuplicate = () => persons.some((person) => { return (person.name === newName || person.number === newNumber) })
 
-  const addPersonToList = (event) => {
+  useEffect(addAll, [])
+
+   const addPersonToList = (event) => {
     event.preventDefault()
-    if (!isNumberDuplicate()) {
-      const newPerson = {
-        name: newName,
-        number: newNumber
+
+    const newPerson = {
+      name: newName,
+      number: newNumber
+    }
+    phonebookService.create(newPerson).then(response => {
+      console.log('Response from App: ', response);
+      if (response) {
+        const indexOfElement = persons.findIndex(p => p.name === response.name)
+        console.log('Before', persons, 'Index', indexOfElement);
+        persons[indexOfElement].number = response.number
+
+        console.log('after', persons);
+        setPersons(persons)
+        setNewName('')
+        setNumber('')
       }
-      setPersons(persons.concat(newPerson))
-      setNewName('')
-      setNumber('')
-    }
-
-    else {
-      alert(`${newName} or ${newNumber} is already added to the phonebook`)
-    }
-
+    })
   }
+
+  const removePerson = person => {
+    const confirmation = window.confirm(`delete ${person.name} ?`)
+    console.log('Confirmation', confirmation)
+    if (confirmation) {
+      phonebookService.remove(person.id)
+      setPersons(persons.filter(p => p.id !== person.id))
+    }
+  }
+
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -62,7 +68,7 @@ const App = () => {
       <h3>add a new</h3>
       <PersonForm addPerson={addPersonToList} newName={newName} nameHandler={handleNameChange} newNumber={newNumber} numberHandler={handleNumberChange} />
       <h3>Numbers</h3>
-      <Persons filter={showFiltered} persons={persons} />
+      <Persons filter={showFiltered} persons={persons} removePerson={removePerson} />
     </div >
   )
 }

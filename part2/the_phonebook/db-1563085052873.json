@@ -11,9 +11,19 @@
       "id": 2
     },
     {
+      "name": "Dan Abramov",
+      "number": "12-43-234345",
+      "id": 3
+    },
+    {
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": 4
+    },
+    {
+      "name": "cliff",
+      "number": "888",
+      "id": 5
     },
     {
       "name": "Kalle Anka",
@@ -21,19 +31,14 @@
       "id": 6
     },
     {
-      "name": "Hacke Hackspett",
-      "number": "1561616",
-      "id": 12
+      "name": "Musse Pigg",
+      "number": "678968976",
+      "id": 7
     },
     {
       "name": "cliff",
-      "number": "888",
-      "id": 13
-    },
-    {
-      "name": "Arne Grävling",
-      "number": "7878",
-      "id": 14
+      "number": "098098",
+      "id": 8
     }
   ]
 }
