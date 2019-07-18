@@ -6,6 +6,7 @@ const getAll = () => {
     return request.then(response => response.data)
 }
 
+
 const create = async newObject => {
     const persons = await getAll()
     const isDuplicate = persons.some(person => {
@@ -16,7 +17,7 @@ const create = async newObject => {
         if (confirmation) {
             const person = persons.find(p => p.name === newObject.name)
             update(person.id, newObject)
-            return newObject
+            return person
         }
     } else {
         const request = axios.post(baseURL, newObject)
