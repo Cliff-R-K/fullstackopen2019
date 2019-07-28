@@ -1,0 +1,49 @@
+{
+  "persons": [
+    {
+      "name": "Arto Hellas",
+      "number": "040-123456",
+      "id": 1
+    },
+    {
+      "name": "Ada Lovelace",
+      "number": "39-44-5323523",
+      "id": 2
+    },
+    {
+      "name": "Mary Poppendieck",
+      "number": "39-23-6423122",
+      "id": 4
+    },
+    {
+      "name": "Kalle Anka",
+      "number": "666",
+      "id": 6
+    },
+    {
+      "name": "Hacke Hackspett",
+      "number": "1561616",
+      "id": 12
+    },
+    {
+      "name": "Arne Grävling",
+      "number": "7878",
+      "id": 14
+    },
+    {
+      "name": "Leon Karlsson",
+      "number": "1604160",
+      "id": 15
+    },
+    {
+      "name": "Anton Körberg",
+      "number": "9880989",
+      "id": 16
+    },
+    {
+      "name": "cliff",
+      "number": "0000",
+      "id": 19
+    }
+  ]
+}
