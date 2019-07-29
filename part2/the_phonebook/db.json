@@ -26,11 +26,6 @@
       "id": 12
     },
     {
-      "name": "cliff",
-      "number": "777",
-      "id": 13
-    },
-    {
       "name": "Arne Grävling",
       "number": "7878",
       "id": 14
@@ -46,14 +41,9 @@
       "id": 16
     },
     {
-      "name": "gggg",
-      "number": "4444",
-      "id": 17
-    },
-    {
-      "name": "aaa",
-      "number": "56555",
-      "id": 18
+      "name": "cliff",
+      "number": "0000",
+      "id": 19
     }
   ]
 }
