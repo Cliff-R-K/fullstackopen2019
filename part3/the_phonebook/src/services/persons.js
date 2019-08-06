@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseURL = '/api/persons'
+const baseURL = 'http://localhost:3001/persons'
 
 const getAll = () => {
     const request = axios.get(baseURL)
@@ -16,14 +16,14 @@ const create = async newObject => {
         const confirmation = window.confirm(`${newObject.name} is already added to the phonebook, replace the old number with a new one?`)
         if (confirmation) {
             const person = persons.find(p => p.name === newObject.name)
-            update(person.id, newObject)
-            return person
+            return update(person.id, newObject)
+        } else {
+            return null
         }
     } else {
         const request = axios.post(baseURL, newObject)
         return request.then(response => response.data)
     }
-
 }
 
 const remove = id => {
