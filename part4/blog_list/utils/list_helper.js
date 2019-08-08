@@ -35,7 +35,6 @@ const mostBlogs = (blogs) => {
 
     blogMap.forEach((v, k) => {
         if (v === maxPosts) {
-            console.log(k, v)
             author = { author: k, blogs: v }
         }
     })
@@ -60,7 +59,6 @@ const mostLikes = (blogs) => {
 
     blogMap.forEach((v, k) => {
         if (v === maxLikes) {
-            console.log(k, v)
             author = { author: k, likes: v }
         }
     })
