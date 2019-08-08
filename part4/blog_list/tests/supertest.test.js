@@ -1,9 +1,10 @@
-describe('Supertest', () => {
-    const mongoose = require('mongoose')
-    const supertest = require('supertest')
-    const app = require('../app')
+const mongoose = require('mongoose')
+const supertest = require('supertest')
+const app = require('../app')
 
-    const api = supertest(app)
+const api = supertest(app)
+
+describe('Supertest format', () => {
 
     test('should return json', async() => {
         await api.get('/api/blogs')
@@ -17,8 +18,16 @@ describe('Supertest', () => {
         expect(response.body.length).toBe(3)
     })
 
-
-    afterAll(() => {
-        mongoose.connection.close()
+    test('_id should be renamed to id ', async() => {
+        const response = await api.get('/api/blogs')
+        response.body.map(blog => expect(blog.id).toBeDefined())
     })
+
+
+})
+
+
+
+afterAll(() => {
+    mongoose.connection.close()
 })
