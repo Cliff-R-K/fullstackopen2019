@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 { 
-    "title": "Hemma Med Vinden",
+    "title": "Klappkass 3",
     "author": "Snurre sprätt",
     "url": "http://example.com",
-    "likes": 6
+    "likes": 9
 }
