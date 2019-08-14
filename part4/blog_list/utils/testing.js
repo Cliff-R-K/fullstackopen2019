@@ -56,4 +56,13 @@ const httpGet = async() => {
     mongoose.connection.close()
 }
 
-httpGet() */
+httpGet() 
+*/
+let s1
+let s2 = "hello"
+
+console.log(s1)
+console.log(s2)
+if (s1) {
+    console.log("s2 true")
+}

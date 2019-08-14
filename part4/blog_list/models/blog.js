@@ -1,10 +1,23 @@
 const mongoose = require('mongoose')
 
 const blogSchema = mongoose.Schema({
-    title: String,
+    title: {
+        type: String,
+        required: function() {
+            return this.url ? false : true
+        }
+    },
     author: String,
-    url: String,
-    likes: Number
+    url: {
+        type: String,
+        required: function() {
+            return this.title ? false : true
+        }
+    },
+    likes: {
+        type: Number,
+        default: 0
+    }
 })
 
 blogSchema.set('toJSON', {
@@ -14,5 +27,7 @@ blogSchema.set('toJSON', {
         delete returnedObject.__v
     }
 })
+
+
 
 module.exports = mongoose.model('Blog', blogSchema)
