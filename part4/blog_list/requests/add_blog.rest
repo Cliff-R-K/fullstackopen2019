@@ -1,8 +1,10 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyIiwiaWQiOiI1ZDU2ZmUzNjhmYTYxNjFjNzhmNjZkZDciLCJpYXQiOjE1NjU5ODIyODV9.-0_3tLQ2PkjRHVdeE-aujdFsns_TqDIJkKNQ0-u9xtE
 
 { 
-    "url":"something",
-    "author": "vxcvxcvx",
-    "likes": 3333
+    "title":"Monkey Island 4",
+    "url":"www.scumm.com",
+    "author": "Deadly Pirhana Dog",
+    "likes": 7
 }

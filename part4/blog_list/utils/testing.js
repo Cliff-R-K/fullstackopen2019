@@ -58,11 +58,5 @@ const httpGet = async() => {
 
 httpGet() 
 */
-let s1
-let s2 = "hello"
-
-console.log(s1)
-console.log(s2)
-if (s1) {
-    console.log("s2 true")
-}
+const x = 'eyJhbGciOiJIUzI1NiIsInR5c2VybmFtZSI6Im1sdXVra2FpIiwiaW'
+console.log(x.length)

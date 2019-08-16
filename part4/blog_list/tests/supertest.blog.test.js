@@ -5,6 +5,7 @@ const helper = require('./test_helper')
 const api = supertest(app)
 const Blog = require('../models/blog')
 
+
 beforeEach(async() => {
     await Blog.deleteMany({})
 
@@ -70,7 +71,7 @@ describe('Creating blogs', () => {
         await api
             .post('/api/blogs')
             .send(blogWithMissingTitleAndURL)
-            .expect(500)
+            .expect(400)
 
     })
 
